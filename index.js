@@ -7,7 +7,8 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "client/build")));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
 
 // Connect to MongoDB
 mongoose
@@ -24,10 +25,10 @@ app.get("/api/hello", (req, res) => {
 });
 
 // Serve React frontend
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
-
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+  
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
